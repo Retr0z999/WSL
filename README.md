@@ -60,6 +60,6 @@ This is what makes WSL viable for DL.
 ## Progress Log
 <!-- date — what I set up -->
 6/7/26 
-It took me about 2-3 days to play around with WSL and get to Phase 4
-Most of it was downloading and installing, so this wasn't that crazy
-Fiddling period was 6/5/26-6/7/26 for Phases 1-3 and Script for Phase 4
+- It took me about 2-3 days to play around with WSL and get to Phase 4.
+- Most of it was downloading and installing, so this wasn't that crazy.
+- Fiddling period was 6/5/26-6/7/26 for Phases 1-3 and Script for Phase 4.
