@@ -9,17 +9,17 @@ This is a **standalone repo**. Check boxes (`- [x]`) to track progress; they ren
 ## Learning Pathway (phased)
 
 ### Phase 1 — Setup & Config (`setup-and-config/`)
-- [ ] Install **WSL2** (`wsl --install`), pick a distro (Ubuntu LTS recommended)
-- [ ] **Windows Terminal** + a good shell (zsh + oh-my-zsh or starship)
-- [ ] Tune `.wslconfig` (memory, CPU, swap) for ML workloads
-- [ ] Understand the WSL filesystem boundary — keep projects in the Linux FS (`~/`), **not** `/mnt/c`, for speed
+- [X] Install **WSL2** (`wsl --install`), pick a distro (Ubuntu LTS recommended)
+- [X] **Windows Terminal** + a good shell (zsh + oh-my-zsh or starship)
+- [X] Tune `.wslconfig` (memory, CPU, swap) for ML workloads
+- [X] Understand the WSL filesystem boundary — keep projects in the Linux FS (`~/`), **not** `/mnt/c`, for speed
 
 ### Phase 2 — Dev Environment (`dev-environment/`)
-- [ ] Python via **uv** (fast) or conda/mamba; per-project virtualenvs
-- [ ] **VS Code Remote – WSL** (edit in Windows, run in Linux)
-- [ ] `git` + SSH keys + credential sharing with Windows
-- [ ] **tmux** for persistent sessions; dotfiles repo
-- [ ] Docker (Docker Desktop WSL2 backend or native engine)
+- [X] Python via **uv** (fast) or conda/mamba; per-project virtualenvs
+- [X] **VS Code Remote – WSL** (edit in Windows, run in Linux)
+- [X] `git` + SSH keys + credential sharing with Windows
+- [X] **tmux** for persistent sessions; dotfiles repo
+- [X] Docker (Docker Desktop WSL2 backend or native engine)
 
 ### Phase 3 — GPU Acceleration (`gpu-passthrough/`)
 This is what makes WSL viable for DL.
