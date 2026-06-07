@@ -23,14 +23,14 @@ This is a **standalone repo**. Check boxes (`- [x]`) to track progress; they ren
 
 ### Phase 3 — GPU Acceleration (`gpu-passthrough/`)
 This is what makes WSL viable for DL.
-- [ ] Install the **NVIDIA driver on Windows** (the WSL-enabled driver — do **not** install a Linux driver inside WSL)
-- [ ] Install the **CUDA Toolkit for WSL2** inside the distro
-- [ ] Verify: `nvidia-smi` works in WSL
-- [ ] Verify PyTorch sees the GPU: `torch.cuda.is_available()` → `True`
-- [ ] Run a real training step on GPU to confirm throughput
+- [X] Install the **NVIDIA driver on Windows** (the WSL-enabled driver — do **not** install a Linux driver inside WSL)
+- [X] Install the **CUDA Toolkit for WSL2** inside the distro
+- [X] Verify: `nvidia-smi` works in WSL
+- [X] Verify PyTorch sees the GPU: `torch.cuda.is_available()` → `True`
+- [X] Run a real training step on GPU to confirm throughput
 
 ### Phase 4 — Automation (`scripts/`)
-- [ ] Bootstrap script: fresh distro → full ML env in one command
+- [X] Bootstrap script: fresh distro → full ML env in one command
 - [ ] Dotfiles (`.zshrc`, `.tmux.conf`, git config) version-controlled
 - [ ] Helper scripts (env activation, GPU check, project scaffolding)
 

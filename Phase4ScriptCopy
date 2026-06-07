@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+info() { echo "==> $*"; }
+
+install_pkg() {
+  local pkg=$1
+  if ! dpkg -s "$pkg" >/dev/null 2>&1; then
+    sudo apt-get install -y "$pkg"
+  else
+    echo "$pkg already installed"
+  fi
+}
+
+info "Updating apt"
+sudo apt-get update
+
+install_pkg git
+install_pkg tmux
+install_pkg curl
+install_pkg wget
+install_pkg ca-certificates
+install_pkg python3-venv
+install_pkg python3-pip
+
+if ! command -v code >/dev/null 2>&1; then
+  echo "VS Code CLI not found in WSL. Install VS Code Remote - WSL in Windows."
+else
+  echo "VS Code CLI found"
+fi
+
+if ! command -v docker >/dev/null 2>&1; then
+  echo "Docker CLI not found in WSL. Ensure Docker Desktop WSL integration is enabled."
+else
+  echo "Docker CLI found"
+fi
+
+if ! command -v nvidia-smi >/dev/null 2>&1; then
+  echo "nvidia-smi not found: GPU support not available in this WSL distro yet."
+else
+  nvidia-smi --query-gpu=name,driver_version --format=csv,noheader
+fi
+
+MINIFORGE_DIR="$HOME/miniforge3"
+if [ ! -d "$MINIFORGE_DIR" ]; then
+  info "Installing Miniforge"
+  wget -O /tmp/Miniforge3.sh https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+  bash /tmp/Miniforge3.sh -b -p "$MINIFORGE_DIR"
+fi
+
+export PATH="$MINIFORGE_DIR/bin:$PATH"
+eval "$(conda shell.bash hook)"
+
+if ! conda info --base >/dev/null 2>&1; then
+  echo "Conda not initialized correctly"
+  exit 1
+fi
+
+if ! conda env list | grep -q '^torch312'; then
+  info "Creating torch312 env"
+  conda create -n torch312 python=3.12 -y
+fi
+
+conda activate torch312
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121 || true
+
+echo "Bootstrap complete. Activate with: conda activate torch312"
